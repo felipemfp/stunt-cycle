@@ -1,11 +1,13 @@
 menu_pre:
+  add $s0, $zero, $ra
   draw_screen(color_background)
   menu_draw_title(color)
   menu_draw_button_play(color_background, color)
   menu_draw_button_exit(color_background, color)
-  jr $ra
+  jr $s0
 
 menu:
+  add $s1, $zero, $ra
   lw $t8, menu_selection
   beq $t8, 1, menu_draw_selection_1
   beq $t8, 2, menu_draw_selection_2
@@ -57,7 +59,7 @@ menu_on_enter:
   j menu_after_keyboard
 
 menu_play:
-  jr $ra
+  jr $s1
 
 menu_exit:
   exit()

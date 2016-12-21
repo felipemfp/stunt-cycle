@@ -54,11 +54,5 @@
 .end_macro
 
 .macro draw_screen(%color)
-  add $t6, $zero, 0
-  lw $t7, max_height
-  sub $t7, $t7, 1
-  draw_screen_loop:
-    draw_horizontal_line(0, 255, $t6, %color)
-    add $t6, $t6, 1
-    ble $t6, $t7, draw_screen_loop
+  draw_area(0, 127, 0, 127, %color)
 .end_macro

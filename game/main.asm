@@ -1,4 +1,5 @@
 game_pre:
+  add $s0, $zero, $ra
   draw_screen(color_background)
   draw_area(27, 99, 0, 12, color_inverted)
 
@@ -11,7 +12,12 @@ game_pre:
   game_draw_jump_ramp(color_inverted)
   game_draw_buses(color)
   game_draw_landing_ramp(color_inverted)
-  jr $ra
+
+  display_snapshot(display_address, display_snapshot_value)
+
+  game_draw_player()
+  jr $s0
 
 game:
-  jr $ra
+  add $s1, $zero, $ra
+  jr $s1
