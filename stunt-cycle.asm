@@ -23,11 +23,11 @@
   game_player_position: .word 10
   game_player_inclination: .word 0
   game_player_inclination_limit: .word 15
-  game_player_speed: .word 1
-  game_player_speed_interval: .word 8
-  game_player_speed_last: .word 0
-  game_player_move_interval: .word 8
-  game_player_move_last: .word 0
+  game_player_speed: .word 0
+  game_player_speed_interval: .word 10
+  game_player_speed_count: .word 0
+  game_player_move_interval: .word 10
+  game_player_move_count: .word 0
 
   # settings
   max_width: .word 128

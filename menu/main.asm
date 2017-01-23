@@ -42,13 +42,13 @@ menu_keyboard:
 
 menu_on_right:
   lw $t9, menu_selection
-  circular_increment($t9, 1, 2)
+  circular_increment($t9, 1, 2, 1)
   sw $t9, menu_selection
   j menu_after_keyboard
 
 menu_on_left:
   lw $t9, menu_selection
-  circular_decrement($t9, 1, 2)
+  circular_decrement($t9, 1, 2, 1)
   sw $t9, menu_selection
   j menu_after_keyboard
 
