@@ -41,10 +41,10 @@ menu_draw_player:
   circular_increment($t9, 0, $t8, 1)
   sw $t9, menu_player_move_count
   bne $t9, $zero, menu_draw_player_end
-  game_draw_behind_player()
+  game_hide_player()
   lw $t8, game_player_position
   lw $t9, menu_player_speed
-  circular_increment($t8, 10, 120, $t9)
+  circular_increment($t8, 0, 128, $t9)
   sw $t8, game_player_position
   game_draw_player(color_player_detail_faded, color_player_body_faded, color_player_motorcycle_faded)
   j menu_draw_player_end
@@ -67,7 +67,7 @@ menu_keyboard:
   beq $t9, 97, menu_keyboard_handle_left
   beq $t9, 100, menu_keyboard_handle_right
   beq $t9, 10, menu_keyboard_handle_enter
-  beq $t9, 27, menu_exit
+  beq $t9, 27, menu_keyboard_handle_escape
   j menu_draw
 
 menu_keyboard_handle_right:
@@ -87,6 +87,9 @@ menu_keyboard_handle_enter:
   beq $t9, 1, menu_play
   beq $t9, 2, menu_exit
   j menu_keyboard_end
+
+menu_keyboard_handle_escape:
+  j menu_exit
 
 menu_play:
   jr $s1

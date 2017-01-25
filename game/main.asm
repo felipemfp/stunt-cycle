@@ -25,9 +25,9 @@ game:
 
 game_draw:
   game_draw_player(color_player_detail, color_player_body, color_player_motorcycle)
-  j game_after_draw
+  j game_draw_end
 
-game_after_draw:
+game_draw_end:
   lw $t8, keyboard_address
   lw $t8, 0($t8)
   beq $t8, 1, game_keyboard
@@ -36,18 +36,18 @@ game_after_draw:
 game_keyboard:
   lw $t9, keyboard_address
   lw $t9, 4($t9)
-  beq $t9, 32, game_keyboard_on_space
-  beq $t9, 27, game_keyboard_on_escape
+  beq $t9, 32, game_keyboard_handle_space
+  beq $t9, 27, game_keyboard_handle_escape
   j game_draw
 
-game_keyboard_on_space:
+game_keyboard_handle_space:
   lw $t8, game_player_position
-  game_draw_behind_player()
+  game_hide_player()
   circular_increment($t8, 10, 120, 2)
   sw $t8, game_player_position
   j game_draw
 
-game_keyboard_on_escape:
+game_keyboard_handle_escape:
   sw $zero, game_player_speed
   sw $zero, game_crashes
   sw $zero, game_player_inclination
@@ -61,7 +61,7 @@ game_keyboard_on_escape:
   sw $t8, game_player_position
   j main
 
-game_after_keyboard:
+game_keyboard_end:
   j game_draw
 
 game_end:
