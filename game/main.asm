@@ -1,7 +1,6 @@
 game_pre:
   add $s0, $zero, $ra
   draw_screen(color_background)
-  draw_area(27, 99, 0, 12, color_inverted)
 
   draw_horizontal_line(0, 127, 46, color_inverted)
   draw_horizontal_line(0, 127, 80, color_inverted)
@@ -13,7 +12,11 @@ game_pre:
   game_draw_buses(color)
   game_draw_landing_ramp(color_inverted)
 
-  display_snapshot(display_address, display_snapshot_value)
+  display_snapshot()
+
+  lw $t8, game_player_position
+  add $t8, $zero, 10
+  sw $t8, game_player_position
 
   jr $s0
 
@@ -21,7 +24,7 @@ game:
   add $s1, $zero, $ra
 
 game_draw:
-  game_draw_player()
+  game_draw_player(color_player_detail, color_player_body, color_player_motorcycle)
   j game_after_draw
 
 game_after_draw:

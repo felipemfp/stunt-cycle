@@ -18,9 +18,9 @@
     nop
 .end_macro
 
-.macro display_snapshot(%address, %value)
-  lw $t0, %address
-  lw $t1, %value
+.macro display_snapshot()
+  lw $t0, display_address
+  lw $t1, display_snapshot_value
   lw $t2, max_width
   lw $t3, max_height
   mul $t3, $t2, $t3
@@ -35,7 +35,7 @@
     ble $t2, $t3, display_snapshot_loop
 .end_macro
 
-.macro display_snapshot_restore(%address, %value)
+.macro display_snapshot_restore()
   lw $t0, display_address
   lw $t1, display_snapshot_value
   lw $t2, max_width

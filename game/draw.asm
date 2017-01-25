@@ -167,7 +167,6 @@
   draw_horizontal_line(42, 42, 108, %foreground)
 .end_macro
 
-
 .macro game_draw_buses(%foreground)
   lw $a0, game_stage
   add $a0, $a0, 4
@@ -208,7 +207,7 @@
   draw_horizontal_line($a1, $a2, 113, %foreground)
 .end_macro
 
-.macro game_draw_player()
+.macro game_draw_player(%color_detail, %color_body, %color_motorcycle)
   lw $a0, game_player_lane
   beq $a0, 1, game_draw_player_first_lane
   beq $a0, 2, game_draw_player_second_lane
@@ -226,189 +225,189 @@
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 5
-      draw_pixel($a0, $a1, color_player_detail)
+      draw_pixel($a0, $a1, %color_detail)
       add $a1, $a1, 1
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_motorcycle)
+      draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 6
-      draw_pixel($a0, $a1, color_player_detail)
+      draw_pixel($a0, $a1, %color_detail)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 4
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 6
-      draw_pixel($a0, $a1, color_player_detail)
+      draw_pixel($a0, $a1, %color_detail)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 4
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 6
-      draw_pixel($a0, $a1, color_player_detail)
+      draw_pixel($a0, $a1, %color_detail)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 2
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 2
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 11
       add $a2, $a1, 4
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 1
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_detail)
+      draw_vertical_line($a1, $a2, $a0, %color_detail)
       add $a1, $a2, 1
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 14
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 1
       add $a2, $a1, 3
-      draw_vertical_line($a1, $a2, $a0, color_player_motorcycle)
+      draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
       add $a1, $a2, 1
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 1
-      draw_pixel($a0, $a1, color_player_detail)
+      draw_pixel($a0, $a1, %color_detail)
       add $a1, $a1, 2
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 14
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 3
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 1
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 14
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 2
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 3
-      draw_pixel($a0, $a1, color_player_detail)
+      draw_pixel($a0, $a1, %color_detail)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 1
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 10
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 3
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_detail)
+      draw_vertical_line($a1, $a2, $a0, %color_detail)
       add $a1, $a2, 2
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 1
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 10
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_motorcycle)
+      draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
       add $a1, $a2, 2
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_detail)
+      draw_vertical_line($a1, $a2, $a0, %color_detail)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 10
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 1
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 1
       add $a2, $a1, 3
-      draw_vertical_line($a1, $a2, $a0, color_player_detail)
+      draw_vertical_line($a1, $a2, $a0, %color_detail)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 8
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 2
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_motorcycle)
+      draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 5
-      draw_pixel($a0, $a1, color_player_body)
+      draw_pixel($a0, $a1, %color_body)
       add $a1, $a1, 4
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 5
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 1
       add $a2, $a1, 1
-      draw_vertical_line($a1, $a2, $a0, color_player_body)
+      draw_vertical_line($a1, $a2, $a0, %color_body)
       add $a1, $a2, 2
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 5
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
       add $a1, $a1, 4
-      draw_pixel($a0, $a1, color_player_motorcycle)
+      draw_pixel($a0, $a1, %color_motorcycle)
 
       add $a0, $a0, 1
       bge $a0, $a3, game_draw_player_first_lane_end
       add $a1, $zero, 46
       sub $a1, $a1, 4
       add $a2, $a1, 2
-      draw_vertical_line($a1, $a2, $a0, color_player_motorcycle)
+      draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
 
       j game_draw_player_first_lane_end
     game_draw_player_first_lane_5_inclination:
