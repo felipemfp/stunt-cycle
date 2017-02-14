@@ -47,9 +47,9 @@
   game_player_position: .word 10
   game_player_height: .word 0
   game_player_speed: .word 0
-  game_player_speed_interval: .word 1
+  game_player_speed_interval: .word 2
   game_player_speed_count: .word 0
-  game_player_brake_interval: .word 1500
+  game_player_brake_interval: .word 10000
   game_player_brake_count: .word 0
   game_player_move_interval: .word 1500
   game_player_move_count: .word 0

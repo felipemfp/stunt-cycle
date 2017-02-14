@@ -41,6 +41,7 @@ game_end:
   sw $zero, game_player_speed
   sw $zero, game_player_speed_count
   sw $zero, game_player_move_count
+  sw $zero, game_player_brake_count
   add $t8, $zero, 1
   sw $t8, game_stage
   sw $t8, game_player_lane
@@ -78,13 +79,13 @@ game_keyboard_handle_not_press:
 
 game_keyboard_handle_space:
   sw $zero, game_player_brake_count
-  # lw $t8, game_player_speed_interval
-  # lw $t9, game_player_speed_count
-  # circular_increment($t9, $zero, $t8, 1)
-  # sw $t9, game_player_speed_count
-  # bne $t9, $zero, game_keyboard_end
+  lw $t8, game_player_speed_interval
+  lw $t9, game_player_speed_count
+  circular_increment($t9, $zero, $t8, 1)
+  sw $t9, game_player_speed_count
+  bne $t9, $zero, game_keyboard_end
   lw $t9, game_player_speed
-  increment($t9, 10, 1)
+  increment($t9, 25, 1)
   sw $t9, game_player_speed
   j game_keyboard_end
 
@@ -132,7 +133,7 @@ game_update_move:
     lw $t9, game_player_speed
     increment($t8, 127, $t9)
     sw $t8, game_player_position
-    beq $t8, 127, game_end
+    beq $t8, 127, game_win
     j game_update_move_n_lane_end
 
   game_update_move_next_lane:
@@ -153,3 +154,17 @@ game_update_draw:
 
 game_update_draw_end:
   j game_update_end
+
+game_win:
+  sw $zero, game_player_speed
+  sw $zero, game_player_speed_count
+  sw $zero, game_player_move_count
+  sw $zero, game_player_brake_count
+  lw $t8, game_stage
+  increment($t8, 10, 1)
+  sw $t8, game_stage
+  add $t8, $zero, 1
+  sw $t8, game_player_lane
+  add $t8, $zero, 10
+  sw $t8, game_player_position
+  j main
