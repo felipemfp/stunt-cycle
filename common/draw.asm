@@ -1,6 +1,6 @@
 .macro draw_pixel(%x, %y, %color)
-  lw $t0, max_width
-  lw $t1, display_address
+  add $t0, $zero, MAX_WIDTH
+  add $t1, $zero, DISPLAY_ADDRESS
   mul $t2, $t0, %y
   add $t2, $t2, %x
   mul $t2, $t2, 4
@@ -10,8 +10,8 @@
 .end_macro
 
 .macro draw_horizontal_line(%from, %to, %y, %color)
-  lw $t0, max_width
-  lw $t1, display_address
+  add $t0, $zero, MAX_WIDTH
+  add $t1, $zero, DISPLAY_ADDRESS
   mul $t2, $t0, %y
   add $t2, $t2, %from
   mul $t2, $t2, 4
@@ -27,8 +27,8 @@
 .end_macro
 
 .macro draw_vertical_line(%from, %to, %x, %color)
-  lw $t0, max_width
-  lw $t1, display_address
+  add $t0, $zero, MAX_WIDTH
+  add $t1, $zero, DISPLAY_ADDRESS
   mul $t2, $t0, %from
   add $t2, $t2, %x
   mul $t2, $t2, 4

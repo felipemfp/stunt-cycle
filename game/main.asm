@@ -28,13 +28,13 @@ game_draw:
   j game_draw_end
 
 game_draw_end:
-  lw $t8, keyboard_address
+  add $t8, $zero, KEYBOARD_ADDRESS
   lw $t8, 0($t8)
   beq $t8, 1, game_keyboard
   j game_draw
 
 game_keyboard:
-  lw $t9, keyboard_address
+  add $t9, $zero, KEYBOARD_ADDRESS
   lw $t9, 4($t9)
   beq $t9, 32, game_keyboard_handle_space
   beq $t9, 27, game_keyboard_handle_escape
@@ -48,9 +48,6 @@ game_keyboard_handle_space:
   j game_draw
 
 game_keyboard_handle_escape:
-  sw $zero, game_player_speed
-  sw $zero, game_crashes
-  sw $zero, game_player_inclination
   sw $zero, game_player_speed
   sw $zero, game_player_speed_count
   sw $zero, game_player_move_count

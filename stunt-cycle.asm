@@ -4,6 +4,12 @@
 # Make use of Bitmap Display with a 4x4 pixel and a resolution equals to 512x512.
 # You'll need a Keyboard and Display Simulator too.
 
+.eqv  MAX_WIDTH               128
+.eqv  MAX_HEIGHT              128
+.eqv  DISPLAY_SNAPSHOT_VALUE  0x00020000
+.eqv  DISPLAY_ADDRESS         0x10010000
+.eqv  KEYBOARD_ADDRESS        0xffff0000
+
 .data 0x10000000
   # colors
   color: .word 0xFFFFFF
@@ -33,27 +39,17 @@
   # variables
   menu_selection: .word 1
   menu_player_speed: .word 1
-  menu_player_move_interval: .word 50
+  menu_player_move_interval: .word 20
   menu_player_move_count: .word 0
-  
+
   game_stage: .word 1
-  game_crashes: .word 0
   game_player_lane: .word 1
   game_player_position: .word 10
-  game_player_inclination: .word 0
-  game_player_inclination_limit: .word 15
   game_player_speed: .word 0
   game_player_speed_interval: .word 10
   game_player_speed_count: .word 0
   game_player_move_interval: .word 10
   game_player_move_count: .word 0
-
-  # settings
-  max_width: .word 128
-  max_height: .word 128
-  display_snapshot_value: .word 0x00020000
-  display_address: .word 0x10010000
-  keyboard_address: .word 0xffff0000
 
 # macros
 .include "common/draw.asm"

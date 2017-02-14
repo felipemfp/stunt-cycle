@@ -19,10 +19,10 @@
 .end_macro
 
 .macro display_snapshot()
-  lw $t0, display_address
-  lw $t1, display_snapshot_value
-  lw $t2, max_width
-  lw $t3, max_height
+  add $t0, $zero, DISPLAY_ADDRESS
+  add $t1, $zero, DISPLAY_SNAPSHOT_VALUE
+  add $t2, $zero, MAX_WIDTH
+  add $t3, $zero, MAX_HEIGHT
   mul $t3, $t2, $t3
   add $t2, $zero, 0
   display_snapshot_loop:
@@ -36,10 +36,10 @@
 .end_macro
 
 .macro display_snapshot_restore()
-  lw $t0, display_address
-  lw $t1, display_snapshot_value
-  lw $t2, max_width
-  lw $t3, max_height
+  add $t0, $zero, DISPLAY_ADDRESS
+  add $t1, $zero, DISPLAY_SNAPSHOT_VALUE
+  add $t2, $zero, MAX_WIDTH
+  add $t3, $zero, MAX_HEIGHT
   mul $t3, $t2, $t3
   add $t2, $zero, 0
   display_snapshot_restore_loop:
@@ -54,13 +54,13 @@
 .end_macro
 
 .macro display_snapshot_restore_pixel(%x, %y)
-  lw $t0, max_width
-  lw $t1, display_address
+  add $t0, $zero, MAX_WIDTH
+  add $t1, $zero, DISPLAY_ADDRESS
   mul $t2, $t0, %y
   add $t2, $t2, %x
   mul $t2, $t2, 4
   add $t2, $t2, $t1
-  lw $t4, display_snapshot_value
+  add $t4, $zero, DISPLAY_SNAPSHOT_VALUE
   add $t2, $t2, $t4
   lw $t3, 0($t2)
   sub $t2, $t2, $t4
@@ -68,15 +68,15 @@
 .end_macro
 
 .macro display_snapshot_restore_horizontal_line(%from, %to, %y)
-  lw $t0, max_width
-  lw $t1, display_address
+  add $t0, $zero, MAX_WIDTH
+  add $t1, $zero, DISPLAY_ADDRESS
   mul $t2, $t0, %y
   add $t2, $t2, %from
   mul $t2, $t2, 4
   add $t2, $t2, $t1
   add $t4, $zero, %from
   add $t5, $zero, %to
-  lw $t6, display_snapshot_value
+  add $t6, $zero, DISPLAY_SNAPSHOT_VALUE
   display_snapshot_restore_horizontal_line_loop:
     add $t2, $t2, $t6
     lw $t3, 0($t2)
@@ -88,8 +88,8 @@
 .end_macro
 
 .macro display_snapshot_restore_vertical_line(%from, %to, %x)
-  lw $t0, max_width
-  lw $t1, display_address
+  add $t0, $zero, MAX_WIDTH
+  add $t1, $zero, DISPLAY_ADDRESS
   mul $t2, $t0, %from
   add $t2, $t2, %x
   mul $t2, $t2, 4
@@ -97,7 +97,7 @@
   add $t4, $zero, %from
   add $t5, $zero, %to
   mul $t6, $t0, 4
-  lw $t7, display_snapshot_value
+  add $t7, $zero, DISPLAY_SNAPSHOT_VALUE
   display_snapshot_restore_vertical_line_loop:
     add $t2, $t2, $t7
     lw $t3, 0($t2)

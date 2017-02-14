@@ -53,7 +53,7 @@ menu_draw_player_end:
   j menu_draw_end
 
 menu_draw_end:
-  lw $t8, keyboard_address
+  add $t8, $zero, KEYBOARD_ADDRESS
   lw $t8, 0($t8)
   beq $t8, 1, menu_keyboard
   j menu_draw
@@ -62,7 +62,7 @@ menu_keyboard_end:
   j menu_draw
 
 menu_keyboard:
-  lw $t9, keyboard_address
+  add $t9, $zero, KEYBOARD_ADDRESS
   lw $t9, 4($t9)
   beq $t9, 97, menu_keyboard_handle_left
   beq $t9, 100, menu_keyboard_handle_right
