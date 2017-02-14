@@ -42,10 +42,37 @@ menu_draw_player:
   sw $t9, menu_player_move_count
   bne $t9, $zero, menu_draw_player_end
   game_hide_player()
+  j menu_draw_player_move
+
+menu_draw_player_move:
+  lw $t8, game_player_lane
+  beq $t8, 1, menu_draw_player_move_increment
+  beq $t8, 2, menu_draw_player_move_decrement
+  beq $t8, 3, menu_draw_player_move_increment
+
+menu_draw_player_move_increment:
   lw $t8, game_player_position
   lw $t9, menu_player_speed
-  circular_increment($t8, 0, 128, $t9)
+  circular_increment($t8, -15, 127, $t9)
   sw $t8, game_player_position
+  beq $t8, 127, menu_draw_player_move_next_lane
+  j menu_draw_player_move_end
+
+menu_draw_player_move_decrement:
+  lw $t8, game_player_position
+  lw $t9, menu_player_speed
+  circular_decrement($t8, -15, 127, $t9)
+  sw $t8, game_player_position
+  beq $t8, -15, menu_draw_player_move_next_lane
+  j menu_draw_player_move_end
+
+menu_draw_player_move_next_lane:
+  lw $t8, game_player_lane
+  circular_increment($t8, 1, 3, 1)
+  sw $t8, game_player_lane
+  j menu_draw_player_move_end
+
+menu_draw_player_move_end:
   game_draw_player(color_player_detail_faded, color_player_body_faded, color_player_motorcycle_faded)
   j menu_draw_player_end
 

@@ -211,6 +211,7 @@
   lw $a0, game_player_position
 
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_1
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   draw_pixel($a0, $a1, %color_detail)
@@ -218,8 +219,10 @@
   add $a2, $a1, 2
   draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
 
+  game_draw_player_left_to_right_1:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_2
   add $a1, $zero, %y_reference
   sub $a1, $a1, 6
   draw_pixel($a0, $a1, %color_detail)
@@ -228,8 +231,10 @@
   add $a1, $a1, 4
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_2:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_3
   add $a1, $zero, %y_reference
   sub $a1, $a1, 6
   draw_pixel($a0, $a1, %color_detail)
@@ -238,8 +243,10 @@
   add $a1, $a1, 4
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_3:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_4
   add $a1, $zero, %y_reference
   sub $a1, $a1, 6
   draw_pixel($a0, $a1, %color_detail)
@@ -250,8 +257,10 @@
   add $a1, $a1, 2
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_4:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_5
   add $a1, $zero, %y_reference
   sub $a1, $a1, 11
   add $a2, $a1, 4
@@ -264,8 +273,10 @@
   add $a1, $a1, 1
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_5:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_6
   add $a1, $zero, %y_reference
   sub $a1, $a1, 14
   add $a2, $a1, 2
@@ -281,8 +292,10 @@
   add $a1, $a1, 2
   draw_pixel($a0, $a1, %color_body)
 
+  game_draw_player_left_to_right_6:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_7
   add $a1, $zero, %y_reference
   sub $a1, $a1, 14
   add $a2, $a1, 2
@@ -297,8 +310,10 @@
   add $a2, $a1, 1
   draw_vertical_line($a1, $a2, $a0, %color_body)
 
+  game_draw_player_left_to_right_7:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_8
   add $a1, $zero, %y_reference
   sub $a1, $a1, 14
   draw_pixel($a0, $a1, %color_body)
@@ -318,8 +333,10 @@
   add $a1, $a2, 1
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_8:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_9
   add $a1, $zero, %y_reference
   sub $a1, $a1, 10
   draw_pixel($a0, $a1, %color_body)
@@ -331,8 +348,10 @@
   add $a1, $a1, 1
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_9:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_10
   add $a1, $zero, %y_reference
   sub $a1, $a1, 10
   add $a2, $a1, 1
@@ -341,8 +360,10 @@
   add $a2, $a1, 2
   draw_vertical_line($a1, $a2, $a0, %color_detail)
 
+  game_draw_player_left_to_right_10:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_11
   add $a1, $zero, %y_reference
   sub $a1, $a1, 10
   draw_pixel($a0, $a1, %color_motorcycle)
@@ -353,8 +374,10 @@
   add $a2, $a1, 3
   draw_vertical_line($a1, $a2, $a0, %color_detail)
 
+  game_draw_player_left_to_right_11:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_12
   add $a1, $zero, %y_reference
   sub $a1, $a1, 8
   add $a2, $a1, 2
@@ -363,16 +386,20 @@
   add $a2, $a1, 2
   draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
 
+  game_draw_player_left_to_right_12:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_13
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   draw_pixel($a0, $a1, %color_body)
   add $a1, $a1, 4
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_13:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_14
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   draw_pixel($a0, $a1, %color_motorcycle)
@@ -382,16 +409,20 @@
   add $a1, $a2, 2
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_14:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_left_to_right_15
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   draw_pixel($a0, $a1, %color_motorcycle)
   add $a1, $a1, 4
   draw_pixel($a0, $a1, %color_motorcycle)
 
+  game_draw_player_left_to_right_15:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, %callback
   add $a1, $zero, %y_reference
   sub $a1, $a1, 4
   add $a2, $a1, 2
@@ -401,12 +432,234 @@
 .end_macro
 
 .macro game_draw_player_right_to_left(%color_detail, %color_body, %color_motorcycle, %x_reference_min, %x_reference_max, %y_reference, %callback)
+  lw $a0, game_player_position
+
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_1
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 4
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
+
+  game_draw_player_right_to_left_1:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_2
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 4
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_2:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_3
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 2
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_3:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_4
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 4
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_4:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_5
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 8
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 2
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
+
+  game_draw_player_right_to_left_5:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_6
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 10
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 1
+  add $a2, $a1, 3
+  draw_vertical_line($a1, $a2, $a0, %color_detail)
+
+  game_draw_player_right_to_left_6:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_7
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 10
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
+  add $a1, $a2, 2
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_detail)
+
+  game_draw_player_right_to_left_7:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_8
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 10
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 3
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_detail)
+  add $a1, $a2, 2
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_8:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_9
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 14
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 2
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 3
+  draw_pixel($a0, $a1, %color_detail)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_9:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_10
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 14
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 3
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+
+  game_draw_player_right_to_left_10:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_11
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 14
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 1
+  add $a2, $a1, 3
+  draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
+  add $a1, $a2, 1
+  add $a2, $a1, 1
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 1
+  draw_pixel($a0, $a1, %color_detail)
+  add $a1, $a1, 2
+  draw_pixel($a0, $a1, %color_body)
+
+  game_draw_player_right_to_left_11:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_12
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 11
+  add $a2, $a1, 4
+  draw_vertical_line($a1, $a2, $a0, %color_body)
+  add $a1, $a2, 1
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_detail)
+  add $a1, $a2, 1
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_12:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_13
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 6
+  draw_pixel($a0, $a1, %color_detail)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 2
+  draw_pixel($a0, $a1, %color_body)
+  add $a1, $a1, 2
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_13:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_14
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 6
+  draw_pixel($a0, $a1, %color_detail)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 4
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_14:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_draw_player_right_to_left_15
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 6
+  draw_pixel($a0, $a1, %color_detail)
+  add $a1, $a1, 1
+  draw_pixel($a0, $a1, %color_motorcycle)
+  add $a1, $a1, 4
+  draw_pixel($a0, $a1, %color_motorcycle)
+
+  game_draw_player_right_to_left_15:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, %callback
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  draw_pixel($a0, $a1, %color_detail)
+  add $a1, $a1, 1
+  add $a2, $a1, 2
+  draw_vertical_line($a1, $a2, $a0, %color_motorcycle)
+
+  j %callback
 .end_macro
 
 .macro game_hide_player_left_to_right(%x_reference_min, %x_reference_max, %y_reference, %callback)
   lw $a0, game_player_position
 
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_1
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   display_snapshot_restore_pixel($a0, $a1)
@@ -414,8 +667,10 @@
   add $a2, $a1, 2
   display_snapshot_restore_vertical_line($a1, $a2, $a0)
 
+  game_hide_player_left_to_right_1:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_2
   add $a1, $zero, %y_reference
   sub $a1, $a1, 6
   display_snapshot_restore_pixel($a0, $a1)
@@ -424,8 +679,10 @@
   add $a1, $a1, 4
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_2:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_3
   add $a1, $zero, %y_reference
   sub $a1, $a1, 6
   display_snapshot_restore_pixel($a0, $a1)
@@ -434,8 +691,10 @@
   add $a1, $a1, 4
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_3:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_4
   add $a1, $zero, %y_reference
   sub $a1, $a1, 6
   display_snapshot_restore_pixel($a0, $a1)
@@ -446,8 +705,10 @@
   add $a1, $a1, 2
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_4:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_5
   add $a1, $zero, %y_reference
   sub $a1, $a1, 11
   add $a2, $a1, 4
@@ -460,8 +721,10 @@
   add $a1, $a1, 1
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_5:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_6
   add $a1, $zero, %y_reference
   sub $a1, $a1, 14
   add $a2, $a1, 2
@@ -477,8 +740,10 @@
   add $a1, $a1, 2
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_6:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_7
   add $a1, $zero, %y_reference
   sub $a1, $a1, 14
   add $a2, $a1, 2
@@ -493,8 +758,10 @@
   add $a2, $a1, 1
   display_snapshot_restore_vertical_line($a1, $a2, $a0)
 
+  game_hide_player_left_to_right_7:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_8
   add $a1, $zero, %y_reference
   sub $a1, $a1, 14
   display_snapshot_restore_pixel($a0, $a1)
@@ -514,8 +781,10 @@
   add $a1, $a2, 1
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_8:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_9
   add $a1, $zero, %y_reference
   sub $a1, $a1, 10
   display_snapshot_restore_pixel($a0, $a1)
@@ -527,8 +796,10 @@
   add $a1, $a1, 1
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_9:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_10
   add $a1, $zero, %y_reference
   sub $a1, $a1, 10
   add $a2, $a1, 1
@@ -537,8 +808,10 @@
   add $a2, $a1, 2
   display_snapshot_restore_vertical_line($a1, $a2, $a0)
 
+  game_hide_player_left_to_right_10:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_11
   add $a1, $zero, %y_reference
   sub $a1, $a1, 10
   display_snapshot_restore_pixel($a0, $a1)
@@ -549,8 +822,10 @@
   add $a2, $a1, 3
   display_snapshot_restore_vertical_line($a1, $a2, $a0)
 
+  game_hide_player_left_to_right_11:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_12
   add $a1, $zero, %y_reference
   sub $a1, $a1, 8
   add $a2, $a1, 2
@@ -559,16 +834,20 @@
   add $a2, $a1, 2
   display_snapshot_restore_vertical_line($a1, $a2, $a0)
 
+  game_hide_player_left_to_right_12:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_13
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   display_snapshot_restore_pixel($a0, $a1)
   add $a1, $a1, 4
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_13:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_14
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   display_snapshot_restore_pixel($a0, $a1)
@@ -578,16 +857,20 @@
   add $a1, $a2, 2
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_14:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_left_to_right_15
   add $a1, $zero, %y_reference
   sub $a1, $a1, 5
   display_snapshot_restore_pixel($a0, $a1)
   add $a1, $a1, 4
   display_snapshot_restore_pixel($a0, $a1)
 
+  game_hide_player_left_to_right_15:
   add $a0, $a0, 1
   bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, %callback
   add $a1, $zero, %y_reference
   sub $a1, $a1, 4
   add $a2, $a1, 2
@@ -597,6 +880,227 @@
 .end_macro
 
 .macro game_hide_player_right_to_left(%x_reference_min, %x_reference_max, %y_reference, %callback)
+  lw $a0, game_player_position
+
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_1
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 4
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+
+  game_hide_player_right_to_left_1:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_2
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 4
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_2:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_3
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 2
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_3:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_4
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 4
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_4:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_5
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 8
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 2
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+
+  game_hide_player_right_to_left_5:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_6
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 10
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  add $a2, $a1, 3
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+
+  game_hide_player_right_to_left_6:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_7
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 10
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 2
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+
+  game_hide_player_right_to_left_7:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_8
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 10
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 3
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 2
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_8:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_9
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 14
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 2
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 3
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_9:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_10
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 14
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 3
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+
+  game_hide_player_right_to_left_10:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_11
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 14
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  add $a2, $a1, 3
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  add $a2, $a1, 1
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 2
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_11:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_12
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 11
+  add $a2, $a1, 4
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+  add $a1, $a2, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_12:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_13
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 6
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 2
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 2
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_13:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_14
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 6
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 4
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_14:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, game_hide_player_right_to_left_15
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 6
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 4
+  display_snapshot_restore_pixel($a0, $a1)
+
+  game_hide_player_right_to_left_15:
+  add $a0, $a0, 1
+  bge $a0, %x_reference_max, %callback
+  ble $a0, %x_reference_min, %callback
+  add $a1, $zero, %y_reference
+  sub $a1, $a1, 5
+  display_snapshot_restore_pixel($a0, $a1)
+  add $a1, $a1, 1
+  add $a2, $a1, 2
+  display_snapshot_restore_vertical_line($a1, $a2, $a0)
+
+  j %callback
 .end_macro
 
 .macro game_draw_player(%color_detail, %color_body, %color_motorcycle)
@@ -606,11 +1110,11 @@
   beq $a0, 3, game_draw_player_third_lane
   j game_draw_player_end
   game_draw_player_first_lane:
-    game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 10, 119, 46, game_draw_player_end)
+    game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 0, 119, 46, game_draw_player_end)
   game_draw_player_second_lane:
-    game_draw_player_right_to_left(%color_detail, %color_body, %color_motorcycle, 10, 119, 80, game_draw_player_end)
+    game_draw_player_right_to_left(%color_detail, %color_body, %color_motorcycle, 8, 119, 80, game_draw_player_end)
   game_draw_player_third_lane:
-    game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 10, 128, 114, game_draw_player_end)
+    game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 8, 127, 114, game_draw_player_end)
   game_draw_player_end:
     nop
 .end_macro
@@ -622,11 +1126,11 @@
   beq $a0, 3, game_hide_player_third_lane
   j game_hide_player_end
   game_hide_player_first_lane:
-    game_hide_player_left_to_right(10, 119, 46, game_hide_player_end)
+    game_hide_player_left_to_right(0, 119, 46, game_hide_player_end)
   game_hide_player_second_lane:
-    game_hide_player_right_to_left(10, 119, 80, game_hide_player_end)
+    game_hide_player_right_to_left(8, 119, 80, game_hide_player_end)
   game_hide_player_third_lane:
-    game_hide_player_left_to_right(10, 128, 114, game_hide_player_end)
+    game_hide_player_left_to_right(8, 127, 114, game_hide_player_end)
   game_hide_player_end:
     nop
 .end_macro

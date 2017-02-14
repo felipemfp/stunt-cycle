@@ -39,7 +39,7 @@
   # variables
   menu_selection: .word 1
   menu_player_speed: .word 1
-  menu_player_move_interval: .word 20
+  menu_player_move_interval: .word 50
   menu_player_move_count: .word 0
 
   game_stage: .word 1
