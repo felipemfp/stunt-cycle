@@ -1105,15 +1105,15 @@
 
 .macro game_draw_player(%color_detail, %color_body, %color_motorcycle)
   lw $a0, game_player_lane
-  beq $a0, 1, game_draw_player_first_lane
-  beq $a0, 2, game_draw_player_second_lane
-  beq $a0, 3, game_draw_player_third_lane
+  beq $a0, 1, game_draw_player_1st_lane
+  beq $a0, 2, game_draw_player_2nd_lane
+  beq $a0, 3, game_draw_player_3rd_lane
   j game_draw_player_end
-  game_draw_player_first_lane:
+  game_draw_player_1st_lane:
     game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 0, 119, 46, game_draw_player_end)
-  game_draw_player_second_lane:
+  game_draw_player_2nd_lane:
     game_draw_player_right_to_left(%color_detail, %color_body, %color_motorcycle, 8, 119, 80, game_draw_player_end)
-  game_draw_player_third_lane:
+  game_draw_player_3rd_lane:
     game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 8, 127, 114, game_draw_player_end)
   game_draw_player_end:
     nop
@@ -1121,15 +1121,15 @@
 
 .macro game_hide_player()
   lw $a0, game_player_lane
-  beq $a0, 1, game_hide_player_first_lane
-  beq $a0, 2, game_hide_player_second_lane
-  beq $a0, 3, game_hide_player_third_lane
+  beq $a0, 1, game_hide_player_1st_lane
+  beq $a0, 2, game_hide_player_2nd_lane
+  beq $a0, 3, game_hide_player_3rd_lane
   j game_hide_player_end
-  game_hide_player_first_lane:
+  game_hide_player_1st_lane:
     game_hide_player_left_to_right(0, 119, 46, game_hide_player_end)
-  game_hide_player_second_lane:
+  game_hide_player_2nd_lane:
     game_hide_player_right_to_left(8, 119, 80, game_hide_player_end)
-  game_hide_player_third_lane:
+  game_hide_player_3rd_lane:
     game_hide_player_left_to_right(8, 127, 114, game_hide_player_end)
   game_hide_player_end:
     nop

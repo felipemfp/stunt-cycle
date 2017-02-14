@@ -1,3 +1,23 @@
+.macro increment(%reg, %limit, %value)
+  add %reg, %reg, %value
+  bgt %reg, %limit, increment_greater_than_limit
+  j increment_end
+  increment_greater_than_limit:
+    add %reg, $zero, %limit
+  increment_end:
+    nop
+.end_macro
+
+.macro decrement(%reg, %limit, %value)
+  sub %reg, %reg, %value
+  blt %reg, %limit, decrement_less_than_limit
+  j decrement_end
+  decrement_less_than_limit:
+    add %reg, $zero, %limit
+  decrement_end:
+    nop
+.end_macro
+
 .macro circular_increment(%reg, %min, %max, %value)
   add %reg, %reg, %value
   bgt %reg, %max, circular_increment_greater_than_max
