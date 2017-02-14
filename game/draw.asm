@@ -1114,7 +1114,10 @@
   game_draw_player_2nd_lane:
     game_draw_player_right_to_left(%color_detail, %color_body, %color_motorcycle, 8, 119, 80, game_draw_player_end)
   game_draw_player_3rd_lane:
-    game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 8, 127, 114, game_draw_player_end)
+    lw $a0, game_player_height
+    add $a1, $zero, 114
+    sub $s2, $a1, $a0
+    game_draw_player_left_to_right(%color_detail, %color_body, %color_motorcycle, 8, 127, $s2, game_draw_player_end)
   game_draw_player_end:
     nop
 .end_macro
@@ -1130,7 +1133,10 @@
   game_hide_player_2nd_lane:
     game_hide_player_right_to_left(8, 119, 80, game_hide_player_end)
   game_hide_player_3rd_lane:
-    game_hide_player_left_to_right(8, 127, 114, game_hide_player_end)
+    lw $a0, game_player_height
+    add $a1, $zero, 114
+    sub $s2, $a1, $a0
+    game_hide_player_left_to_right(8, 127, $s2, game_hide_player_end)
   game_hide_player_end:
     nop
 .end_macro

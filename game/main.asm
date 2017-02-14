@@ -38,6 +38,7 @@ game:
   j game_keyboard_pre
 
 game_end:
+  sw $zero, game_player_height
   sw $zero, game_player_speed
   sw $zero, game_player_speed_count
   sw $zero, game_player_move_count
@@ -66,6 +67,8 @@ game_keyboard_end:
   j game_update
 
 game_keyboard_handle_not_press:
+  lw $t8, game_player_height
+  blt $t8, $zero, game_keyboard_end
   # sw $zero, game_player_speed_count
   lw $t8, game_player_brake_interval
   lw $t9, game_player_brake_count
@@ -78,6 +81,8 @@ game_keyboard_handle_not_press:
   j game_keyboard_end
 
 game_keyboard_handle_space:
+  lw $t8, game_player_height
+  blt $t8, $zero, game_keyboard_end
   sw $zero, game_player_brake_count
   lw $t8, game_player_speed_interval
   lw $t9, game_player_speed_count
@@ -134,7 +139,37 @@ game_update_move:
     increment($t8, 127, $t9)
     sw $t8, game_player_position
     beq $t8, 127, game_win
-    j game_update_move_n_lane_end
+    blt $t8, 22, game_update_move_n_lane_end
+    j game_update_move_jump
+
+    game_update_move_jump:
+      lw $t8, game_player_position
+      lw $t9, game_player_speed
+      mul $t9, $t9, 3
+      add $t9, $t9, 44
+      # add $t9, $t9, $t8
+      blt $t8, $t9, game_update_move_jump_up
+      j game_update_move_jump_down
+
+    game_update_move_jump_up:
+      lw $t8, game_player_height
+      lw $t9, game_player_speed
+      add $s3, $t9, 2
+      increment($t8, $s3, $t9)
+      sw $t8, game_player_height
+      j game_update_move_jump_end
+
+    game_update_move_jump_down:
+      lw $t8, game_player_height
+      beq $t8, $zero, game_update_move_jump_end
+      lw $t9, game_player_speed
+      decrement($t9, 1, 2)
+      decrement($t8, 0, $t9)
+      sw $t8, game_player_height
+      j game_update_move_jump_end
+
+    game_update_move_jump_end:
+      j game_update_move_n_lane_end
 
   game_update_move_next_lane:
     lw $t8, game_player_lane
@@ -156,6 +191,7 @@ game_update_draw_end:
   j game_update_end
 
 game_win:
+  sw $zero, game_player_height
   sw $zero, game_player_speed
   sw $zero, game_player_speed_count
   sw $zero, game_player_move_count

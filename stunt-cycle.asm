@@ -68,6 +68,7 @@ main:
   jal game
   exit()
 
+
 # main codes go here
 .include "menu/main.asm"
 .include "game/main.asm"
