@@ -46,6 +46,8 @@ game_end:
   add $t8, $zero, 1
   sw $t8, game_stage
   sw $t8, game_player_lane
+  add $t8, $zero, 2
+  sw $t8, menu_selection
   add $t8, $zero, 10
   sw $t8, game_player_position
   j main
