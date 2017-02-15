@@ -43,7 +43,7 @@ Configure a __Bitmap Display__ after open in _Tools_:
 
 * **Felipe Pontes** - *Initial work* - [felipemfp](https://github.com/felipemfp)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/felipemfp/stunt-cycle/contributors) who participated in this project.
 
 ## License
 
