@@ -147,7 +147,6 @@ game_update_move:
       lw $t9, game_player_speed
       mul $t9, $t9, 3
       add $t9, $t9, 44
-      # add $t9, $t9, $t8
       blt $t8, $t9, game_update_move_jump_up
       j game_update_move_jump_down
 
@@ -169,6 +168,20 @@ game_update_move:
       j game_update_move_jump_end
 
     game_update_move_jump_end:
+      j game_update_move_jump_fail
+
+    game_update_move_jump_fail:
+      lw $t8, game_player_position
+      blt $t8, 29, game_update_move_n_lane_end
+
+      lw $t9, game_stage
+      add $t9, $t9, 4
+      mul $t9, $t9, 5
+      add $t9, $t9, 44
+      bgt $t8, $t9, game_update_move_n_lane_end
+
+      lw $t8, game_player_height
+      ble $t8, 6, game_end
       j game_update_move_n_lane_end
 
   game_update_move_next_lane:
