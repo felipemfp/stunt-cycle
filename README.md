@@ -2,6 +2,10 @@
 
 :bicyclist: Stunt Cycle made in MIPS Assembly
 
+## Demo
+
+![Demo](https://cdn.rawgit.com/felipemfp/stunt-cycle/cab4f2cc/demo.gif)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
